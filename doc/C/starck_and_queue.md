@@ -38,11 +38,11 @@
 
 如上图top指向栈顶节点。
 
- ![](2.jpg)
+ ![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/2.jpg)
 
 当添加一个节点3的时候，只能在栈顶节点，也就是尾节点后添加，这样3节点变成了栈顶，2节点变成了不可见节点，访问的时候只能访问到3节点。入栈时限制了插入地址，只能在栈顶添加节点。
 
- ![](3.jpg)
+ ![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/3.jpg)
 
 当我们执行出栈的命令时，图2的栈顶元素是3节点，删除的时候只能允许删除栈顶的元素，这样子3节点被删除，top指向删除后的栈顶2节点
 
