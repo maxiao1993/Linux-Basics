@@ -34,7 +34,7 @@
 
 **弹栈（pop）：**栈的删除操作，也叫出栈
 
- ![](1.jpg)
+ ![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/1.jpg)
 
 如上图top指向栈顶节点。
 
