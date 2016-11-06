@@ -49,8 +49,14 @@
 形象的说，栈是一个**先进后出**的线性表。
 
 ### 1.1.2 栈的基本操作
-- 压栈
-- 弹栈
+- 压栈（如图一）
+
+![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/1.1.jpg)
+
+- 弹栈(如图二)
+
+![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/21.2.jpg)
+
 - 判断栈是否为空
 - 求栈的大小
 - 获取栈顶元素的值
