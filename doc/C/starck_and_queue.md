@@ -71,3 +71,8 @@
 栈的第一种实现方法是使用数组。
 
 它是利用一组地址连续的存储单元以此存放自栈底到栈顶的数据元素，同时设指针top指示栈顶的当前位置。空栈的栈顶指针值为零。
+
+当它使用数组表示时，通常以数组的头做为栈底，以数组头到数组尾做为栈顶的生长方向：
+
+![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/3.1.jpg)
+
