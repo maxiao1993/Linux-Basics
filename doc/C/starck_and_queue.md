@@ -76,3 +76,4 @@
 
 ![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/3.1.jpg)
 
+[栈的数组实现](https://github.com/jvshwang/Linux-Basics/blob/master/src/stack/arr_stack.c)
