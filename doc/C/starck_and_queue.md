@@ -81,4 +81,4 @@
 ### 1.2.2栈的链表实现 
 栈的第二种 实现方法是使用链表。
 
-
+[链表实现](https://github.com/jvshwang/Linux-Basics/blob/master/src/stack/l_stack.c)
