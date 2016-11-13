@@ -1,5 +1,5 @@
 # 基本链表（linked list）算法
-起草人：赵益民
+起草人：赵益民(zhaoym2016@lzu.edu.cn)
 
 ## 基本结构定义
 链表可以有多种形式定义，它可以是单链接(singly linked)的或者是双链接(double linked)的，可以是有序的也可以是无序的，可以是循环的也可以是非循环的。
@@ -23,13 +23,12 @@
     } dnode;
 ```
 
-## 链表的搜索（查）
+## 链表的搜索
 过程list_search(L,k)采用简单的线性搜索方法，用于查找链表L中第一个关键字为k的元素，并返回改指针。如果没有关键字为k的对象，返回NULL。
 
 ```c
     snode *list_search(snode *L, int k){
-        struct linked_list *p;
-        p = L;
+        snode *p = L;
         while((p != NULL) && (p.val != k)){
             p = p->next;
         }
@@ -40,15 +39,24 @@
 ## 链表的插入
 链表的插入分多种情况，简单的插入例如只插入到链表头或者链表尾，复杂的情况如插入到指定的位置
 
-这里只介绍简单的链表头插入。
+这里只介绍简单的链表头插入和链表尾插入
 ```c
     //单链表
     snode *list_add(snode *L, snode *x){
         if(x != NULL)
             x->next = L;
-        L = x;
-        return L;
+        return x;
     }
+
+    void list_add_tail(snode *L, snode *x){
+        snode *p = L;
+        while(p->next != NULL){
+            p = p->next;
+        }
+        p->next = x;
+        return;
+    }
+
 
     //双链表
     dnode *list_add(dnode *L, dnode *x){
@@ -70,21 +78,19 @@
 ### 已知节点指针
 ```c
     //单链表
-    void list_delete(snode *L, snode *x){
-        snode *p;
+    snode *list_delete(snode *L, snode *x){
         if(L == NULL || x == NULL)
             return;
-        else if(L == x){
-            L->next = x->next;
-            return;
-        }
-        p = L;
-        while( p = p->next ){
+        if(L == x)
+            return L->next;
+        snode *p = L;
+        do{
             if(p->next == x){
                 p->next = x->next;
                 break;
             }
-        }
+        }while( p = p->next );
+        return L;
     }
 
     //双向链表
@@ -118,21 +124,135 @@
     //单链表：已知链表L和关键字k
     snode *p;
     while(p = list_search(L, k)){
-        list_delete(L, p);
+        L = list_delete(L, p);
     }
-    
-    
+
+    //上面这种方法效率并不是很好,我们希望一遍过(one-pass),那我们可以这样实现
+    snode* removeElements(snode* L, int k) {
+        snode *newHead = {-1, NULL};
+        snode *p = newHead;
+        newHead->next = L;
+        while(p->next){
+            if(p->next->val == k){
+                p->next = p->next->next;
+            }else
+                p = p->next;
+        }
+        return newHead->next;
+    }
 
     //双向链表：已知链表L和关键字k
     dnode *p;
     while(p = list_search(L, k)){
         list_delete(L, p);
     }
+
 ```
 
-# 高级链表（linked list）算法
+# 高级链表（advanced linked list）算法
 ## 判断循环链表
+如何判断一个链表是否是循环的?
 
+以下是一种有效的实现.
+```c 
+    int hasCycle(ListNode *head) {
+        ListNode *fast;
+        ListNode *slow;
+        fast = slow = head;
+        while(fast && slow && fast->next){
+            fast = fast->next->next;
+            slow = slow->next;
+            if(fast == slow)
+                return 1;
+        }
+        return 0;
+    }
+```
+
+在此基础之上, 问:  
+1.如果已知是循环链表, 怎么知道他的循环部分有多少个节点?即环有多大?  
+2.同样已知是循环链表, 怎么获得那个循环开始的节点?以及表头距这个节点有多远?
+
+```c 
+    snode *detectCycle(snode *head) {
+        snode *fast = head, *slow = head;
+        while( fast && fast->next){
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow == fast)
+                break;
+        }
+        if(!fast || !fast->next)
+            return NULL;
+        slow = head;
+        while(fast != slow){
+            fast = fast->next;
+            slow = slow->next;
+        }
+        return slow;
+    }
+```
+## LeetCode OJ中的一些算法题
+### ID: 24 -- Swap Nodes in Pairs
+> Given a linked list, swap every two adjacent nodes and return its head.  
+> For example,  
+>> Given 1->2->3->4, you should return the list as 2->1->4->3.  
+
+> Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed. 
+
+```c 
+    snode* swapPairs(snode* head) {
+        snode newHead = {-1, NULL} ;
+        snode *p = newHead;
+        p->next = head;
+        snode *q = p->next;
+        while(q && q->next){
+            snode *tmp = q;
+            q = q->next;
+            tmp->next = q->next;
+            q->next = tmp;
+            p->next = q;
+            q = tmp->next;
+            p = tmp;
+        }
+        return newHead.next;
+    }
+
+```
+
+### ID: 92. Reverse Linked List II
+> Reverse a linked list from position m to n. Do it in-place and in one-pass.  
+>For example:
+>> Given 1->2->3->4->5->NULL, m = 2 and n = 4,   
+>> return 1->4->3->2->5->NULL.
+
+>Note:
+>> Given m, n satisfy the following condition:  
+>> 1 ≤ m ≤ n ≤ length of list. 
+```c 
+    snode* reverseBetween(snode* head, int m, int n) {
+        snode newHead = {-1, NULL};
+        snode *tmp = newHead, *p1, *p2, *p3, *pre;
+        tmp->next = head;
+        for(int i = 0; i < m-1; i++){
+            tmp = tmp->next;
+        }
+        p1 = tmp;
+        p2 = tmp->next;
+        pre = p1;
+        tmp = tmp->next;
+        for(int i = m; i <= n; i++){
+            snode *q = tmp;
+            tmp = tmp->next;
+            q->next = pre;
+            pre = q; 
+        }
+        p1->next = pre;
+        p2->next = tmp;
+            
+        return newHead.next;
+    }
+```
 ## 内核中链表的实现
 在linux的内核中提供了链表的使用接口, 实现的都是是双向链表, 所有链表操作的代码都在<linux/list.h>中实现, 而结构体struct list_head在<linux/type.h>中定义.
 ```c 
@@ -140,6 +260,20 @@
 	    struct list_head *next, *prev;
     };
 ```
+
+### 链表的使用
+类似于:
+```c
+    struct fox{
+        unsigned long   tail_length;
+        unsigned long   weight;
+        int             is_fantastic;
+        struct list_head list;
+    }
+
+    list_add(&f->list, &fox_list);
+```
+
 ### 初始化工作
 ```c 
     #define LIST_HEAD_INIT(name) { &(name), &(name) }
