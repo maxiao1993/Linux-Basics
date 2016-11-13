@@ -76,3 +76,9 @@
 
 ![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/3.1.jpg)
 
+[栈的数组实现](https://github.com/jvshwang/Linux-Basics/blob/master/src/stack/arr_stack.c)
+
+### 1.2.2栈的链表实现 
+栈的第二种 实现方法是使用链表。
+
+
