@@ -1,15 +1,13 @@
 #include<stdio.h>
 #include<malloc.h>
-#include<stdbool.h>
 
-#define true 1
-#define false 0
 
-typedef int datatype;
+
+
 
 typedef struct singly
 {
-	datatype  node;
+	int  node;
 	struct singly *pnext;
 }Node, *pNode;
 
@@ -109,7 +107,7 @@ void main(void)
 {
 	Stack s;
 	int i,r,n,m,d;
-    Init_stack(&s);
+        Init_stack(&s);
 	do
 	{
 		printf("1:input,2:pop,3:empty,4:print,5:clean:\n");
@@ -138,7 +136,7 @@ void main(void)
 				break;
 			case 2 :
 				Print_stack(&s);
-			    printf("去掉几个：");
+			        printf("去掉几个：");
 				scanf("%d",&d);
 				printf("去掉数字为：");
 				for(i=0;i<d;i++)
