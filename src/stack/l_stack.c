@@ -1,9 +1,7 @@
 #include<stdio.h>
 #include<malloc.h>
-#include<stdbool.h>
 
-#define true 1
-#define false 0
+
 
 typedef int datatype;
 
