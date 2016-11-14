@@ -108,7 +108,7 @@
 出队列后：出队列(队首)之后。队首是20，队尾是30。
 - 入队（如下图）
 
-![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/queue_1.jpg)
+![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/queue_2.jpg)
 
 入队列前：队首是20，队尾是30。
 
