@@ -96,3 +96,29 @@
 **出队：**从队头取出元素的操作。
 
 ### 2.1.2队列的基本操作
+- 出队列(如下图)
+
+![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/queue_1.jpg)
+
+出队列前：队首是10，队尾是30。
+
+出队列后：出队列(队首)之后。队首是20，队尾是30。
+- 入队（如下图）
+
+![](https://github.com/jvshwang/Linux-Basics/blob/master/doc/img/stark_and_queue/queue_1.jpg)
+
+入队列前：队首是20，队尾是30。
+
+入队列后：40入队列(队尾)之后。队首是20，队尾是40。
+
+## 2.2队列的实现
+队列可以由两种方式实现：数组队列和链式队列。
+### 2.2.1数组实现
+
+[队列的数组实现](https://github.com/jvshwang/Linux-Basics/blob/master/src/queue/arr_queue.c)
+
+### 2.2.2链表实现
+
+[队列的链表实现]()
+
+
