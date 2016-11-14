@@ -3,11 +3,11 @@
 
 
 
-typedef int datatype;
+
 
 typedef struct singly
 {
-	datatype  node;
+	int  node;
 	struct singly *pnext;
 }Node, *pNode;
 
