@@ -232,20 +232,20 @@
 ```c 
     snode* reverseBetween(snode* head, int m, int n) {
         snode newHead = {-1, NULL};
-        snode *tmp = newHead, *p1, *p2, *p3, *pre;
-        tmp->next = head;
+        snode *q = newHead, *p1, *p2, *tmp, *pre;
+        q->next = head;
         for(int i = 0; i < m-1; i++){
-            tmp = tmp->next;
+            q = q->next;
         }
-        p1 = tmp;
-        p2 = tmp->next;
+        p1 = q;
+        p2 = q->next;
         pre = p1;
-        tmp = tmp->next;
+        q = q->next;
         for(int i = m; i <= n; i++){
-            snode *q = tmp;
-            tmp = tmp->next;
-            q->next = pre;
-            pre = q; 
+            snode *tmp = q;
+            q = q->next;
+            tmp->next = pre;
+            pre = tmp; 
         }
         p1->next = pre;
         p2->next = tmp;
