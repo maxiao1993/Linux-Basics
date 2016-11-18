@@ -62,6 +62,7 @@ int Pop_stack()
 
 		int ret = arr[count-1];
 		count--;
+		return ret;
 	}
 	else
 		return -1;
@@ -109,7 +110,7 @@ void main(void)
 					printf("%d\n",Peek_stack());
 				 	break; 
 			  case 4 :
-					Pop_stack();
+					printf("%d\n",Pop_stack());
 				 	break;
 			  case 5 :
 					printf("%d\n",Size_stack());
