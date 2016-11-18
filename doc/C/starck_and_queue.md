@@ -1,5 +1,6 @@
 # 栈与对列
 
+> 王聚生
 
 ## 目录
 - 一、栈
@@ -122,6 +123,6 @@
 
 ### 2.2.2链表实现
 
-[队列的链表实现]()
+[队列的链表实现](https://github.com/jvshwang/Linux-Basics/tree/master/src/queue)
 
 
