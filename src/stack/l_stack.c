@@ -1,10 +1,6 @@
 #include<stdio.h>
 #include<malloc.h>
 
-
-
-
-
 typedef struct singly
 {
 	int  node;
