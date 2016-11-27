@@ -7,13 +7,6 @@ typedef struct singly
 	struct singly *pnext;
 }Node, *pNode;
 
-typedef struct stack
-{
-	pNode TOP;
-	pNode BOT;
-
-}Stack,*pStack;
-
 
 void Init_stack(pStack ps)
 {
