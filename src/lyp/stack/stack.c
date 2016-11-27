@@ -74,7 +74,7 @@ void create_prev(struct stack **s)
     struct stack *stack; 
 
     stack = (struct stack *)malloc(sizeof(*stack));
-    stack->top = -1;
+    stack->top = STACK_BOT_PREV;
     memset(stack->data, 0, sizeof(stack->data));
 
     stack->pop = pop_prev;
@@ -124,7 +124,7 @@ void create_curr(struct stack **s)
     struct stack *stack;
 
     stack = (struct stack *)malloc(sizeof(*stack));
-    stack->top = 0;
+    stack->top = STACK_BOT_CURR;
     memset(stack->data, 0, sizeof(stack->data));
 
     stack->pop = pop_curr;
