@@ -44,9 +44,9 @@ int main(void)
             break;
         case IS_EMPTY :
             if(stack->is_empty(stack))
-                printf("its empty stack");
+                printf("its empty stack\n");
             else
-                printf("it is not empty stack");
+                printf("it is not empty stack\n");
             break;
         case  IS_OVERFLOW :
             if(stack->is_overflow(stack))
